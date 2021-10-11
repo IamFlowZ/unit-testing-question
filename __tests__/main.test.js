@@ -1,5 +1,7 @@
 const { default: goodFunc } = require('../good');
+const rewire = require('rewire')
 
+// the "Javascript" way of doing things
 describe('good tests', () => {
 	test('first function is called', () => {
 		const result = goodFunc('a');
@@ -13,20 +15,21 @@ describe('good tests', () => {
 	});
 });
 
+// the "python" way of doing
 jest.mock('../bad', () => {
 	const badFunc = jest.requireActual('../bad');
 
 	return {
 		__esModule: true,
 		...badFunc,
-		firstFunc: jest.fn(),
-		secondFunc: jest.fn()
+		firstFunction: jest.fn(),
+		secondFunction: jest.fn()
 	}
 })
 
 const badFunc = require('../bad').default;
-const firstMock = require('../bad').firstFunc;
-const secondMock = require('../bad').secondFunc;
+const firstMock = require('../bad').firstFunction;
+const secondMock = require('../bad').secondFunction;
 
 describe('bad tests', () => {
 	test('first function is called', () => {
@@ -38,4 +41,20 @@ describe('bad tests', () => {
 		badFunc();
 		expect(secondMock.mock.calls.length).toBe(1);
 	});
-})
+});
+
+const rewiredModule = rewire('../bad');
+describe('rewired module', () => {
+	const firstMock = jest.fn()
+	const secondMock = jest.fn()
+
+	beforeAll(() => {
+		rewiredModule.__set__('firstFunction', firstMock)
+		rewiredModule.__set__('secondFunction', secondMock)
+	})
+
+	test('first function is called', () => {
+		rewiredModule.default('1');
+		expect(firstMock.mock.calls.length).toBe(1);
+	})
+});

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/IamFlowZ/unit-testing-question#readme",
   "dependencies": {
-    "jest": "^27.2.5"
+    "jest": "^27.2.5",
+    "rewire": "^5.0.0"
   }
 }
