@@ -1,0 +1,1 @@
+Use this repo to examine the two different testing methods. The "node" branch has the Javascript version of the test. The "python" branch has the python version of the branch. Feel free to fork & PR with questions, suggestions or changes.
