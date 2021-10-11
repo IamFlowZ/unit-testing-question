@@ -5,19 +5,19 @@ from index import main
 
 class TestMain(unittest.TestCase):
 
-	@patch('index.first_func')
 	@patch('index.second_func')
+	@patch('index.first_func')
 	def test_main_with_param(self, first_mock, second_mock):
-		main()
-		self.assertTrue(first_mock.called)
-		self.assertFalse(second_mock.called)
+		main(1)
+		first_mock.assert_called()
+		second_mock.assert_not_called()
 
-	@patch('index.first_func')
 	@patch('index.second_func')
+	@patch('index.first_func')
 	def test_main_without_param(self, first_mock, second_mock):
-		main('1')
-		self.assertFalse(first_mock.called)
-		self.assertTrue(second_mock.called)
+		main()
+		first_mock.assert_not_called()
+		second_mock.assert_called()
 
 if __name__ == '__main__':
 	unittest.main()
