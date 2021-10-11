@@ -1,0 +1,24 @@
+{
+  "name": "unit-testing",
+  "version": "1.0.0",
+  "description": "Use this repo to examine the two different testing methods. The \"node\" branch has the Javascript version of the test. The \"python\" branch has the python version of the branch. Feel free to fork & PR with questions, suggestions or changes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IamFlowZ/unit-testing-question.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IamFlowZ/unit-testing-question/issues"
+  },
+  "homepage": "https://github.com/IamFlowZ/unit-testing-question#readme",
+  "dependencies": {
+    "jest": "^27.2.5"
+  }
+}
